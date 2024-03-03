@@ -1,0 +1,11 @@
+EventLog.Event trigger = new EventLog.Event();
+			trigger.setOrgId(Long.parseLong(user.getOrgId()));
+			trigger.setUserId(Long.parseLong(userId));
+			trigger.setObjectName(table);
+			trigger.setName(command);
+			trigger.setStatus(1);
+			trigger.setIp(IpUtils.getClientIp(request));
+			trigger.setSourceUrl(request.getHeader("referer"));
+			trigger.setAppName(request.getHeader("user-agent"));
+			trigger.setUser(user);
+			EventLog.log(trigger);
